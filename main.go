@@ -4,6 +4,7 @@ import (
 	"flag"
 	"strings"
 
+	gengo "google.golang.org/protobuf/cmd/protoc-gen-go/internal_gengo"
 	"google.golang.org/protobuf/compiler/protogen"
 )
 
@@ -53,6 +54,7 @@ func main() {
 			}
 		}
 
+		gen.SupportedFeatures = gengo.SupportedFeatures
 		return nil
 	})
 }
