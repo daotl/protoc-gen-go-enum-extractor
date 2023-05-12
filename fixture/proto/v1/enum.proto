@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package proto.v1;
+
+option go_package = "github.com/jiayinzhang-mint/jiayinzhang-mint/protoc-gen-go-enum-extractor/fixture/gen/proto/v1";
+
+enum PropertyChangeOp {
+  PROPERTY_CHANGE_OP_UNSPECIFIED = 0;
+  PROPERTY_CHANGE_OP_ADD = 1;
+  PROPERTY_CHANGE_OP_REMOVE = 2;
+  PROPERTY_CHANGE_OP_ASSIGN = 3;
+  PROPERTY_CHANGE_OP_INDIRECT_REMOVE = 4;
+}

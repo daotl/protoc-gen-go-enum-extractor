@@ -1,0 +1,14 @@
+version: v1
+plugins:
+  - name: go
+    out: gen
+    opt: paths=source_relative
+  - name: go-grpc
+    out: gen
+    opt:
+      - paths=source_relative
+  - name: go-enum-extractor
+    out: gen
+    opt:
+      - paths=source_relative
+      - include_go_packages=github.com/jiayinzhang-mint/jiayinzhang-mint/protoc-gen-go-enum-extractor/fixture/gen/proto/v1
