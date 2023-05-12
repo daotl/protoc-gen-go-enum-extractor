@@ -16,20 +16,32 @@ func genEnumExtractor(gen *protogen.Plugin, file *protogen.File) {
 	g.P()
 	g.P("import \"strings\"")
 
-	for _, enum := range file.Enums {
-		prefix := strings.TrimSuffix(enum.Values[0].GoIdent.GoName, unspecifiedSuffix)
-		prefix = strings.TrimPrefix(prefix, enum.GoIdent.GoName+"_")
-
-		// extract actual value
-		g.P("func (e ", enum.GoIdent.GoName, ") ExtractValue() string {")
-		g.P("return strings.TrimPrefix(e.String(), \"", prefix, "\")")
-		g.P("}")
-		g.P()
-
-		// create enum from actual value
-		g.P("func (e *", enum.GoIdent.GoName, ") FromValue(v string) {")
-		g.P("*e = ", enum.GoIdent.GoName, "(", enum.GoIdent.GoName, "_value", "[\"", prefix, "\" + v])")
-		g.P("}")
-		g.P()
+	// handle embedded enums
+	for _, msg := range file.Messages {
+		for _, enum := range msg.Enums {
+			handleEnum(enum, g)
+		}
 	}
+
+	// handle top-level enums
+	for _, enum := range file.Enums {
+		handleEnum(enum, g)
+	}
+}
+
+func handleEnum(enum *protogen.Enum, g *protogen.GeneratedFile) {
+	prefix := strings.TrimSuffix(enum.Values[0].GoIdent.GoName, unspecifiedSuffix)
+	prefix = strings.TrimPrefix(prefix, enum.GoIdent.GoName+"_")
+
+	// extract actual value
+	g.P("func (e ", enum.GoIdent.GoName, ") ExtractValue() string {")
+	g.P("return strings.TrimPrefix(e.String(), \"", prefix, "\")")
+	g.P("}")
+	g.P()
+
+	// create enum from actual value
+	g.P("func (e *", enum.GoIdent.GoName, ") FromValue(v string) {")
+	g.P("*e = ", enum.GoIdent.GoName, "(", enum.GoIdent.GoName, "_value", "[\"", prefix, "\" + v])")
+	g.P("}")
+	g.P()
 }

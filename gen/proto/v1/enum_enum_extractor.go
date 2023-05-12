@@ -4,6 +4,14 @@ package v1
 
 import "strings"
 
+func (e DoRequest_Type) ExtractValue() string {
+	return strings.TrimPrefix(e.String(), "DoRequest_TYPE_")
+}
+
+func (e *DoRequest_Type) FromValue(v string) {
+	*e = DoRequest_Type(DoRequest_Type_value["DoRequest_TYPE_"+v])
+}
+
 func (e PropertyChangeOp) ExtractValue() string {
 	return strings.TrimPrefix(e.String(), "PROPERTY_CHANGE_OP_")
 }

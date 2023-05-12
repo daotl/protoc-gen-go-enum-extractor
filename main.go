@@ -49,7 +49,12 @@ func main() {
 				continue
 			}
 
-			if len(f.Enums) > 0 {
+			enumNum := len(f.Enums)
+			for _, m := range f.Messages {
+				enumNum += len(m.Enums)
+			}
+
+			if enumNum > 0 {
 				genEnumExtractor(gen, f)
 			}
 		}

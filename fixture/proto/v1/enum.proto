@@ -11,3 +11,14 @@ enum PropertyChangeOp {
   PROPERTY_CHANGE_OP_ASSIGN = 3;
   PROPERTY_CHANGE_OP_INDIRECT_REMOVE = 4;
 }
+
+message DoRequest {
+  enum Type {
+    TYPE_UNSPECIFIED = 0;
+    TYPE_ADD = 1;
+    TYPE_REMOVE = 2;
+    TYPE_ASSIGN = 3;
+  }
+
+  Type type = 1;
+}
