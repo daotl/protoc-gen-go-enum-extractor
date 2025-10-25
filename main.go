@@ -6,6 +6,7 @@ import (
 
 	gengo "google.golang.org/protobuf/cmd/protoc-gen-go/internal_gengo"
 	"google.golang.org/protobuf/compiler/protogen"
+	"google.golang.org/protobuf/types/descriptorpb"
 )
 
 type arrayFlags []string
@@ -60,6 +61,8 @@ func main() {
 		}
 
 		gen.SupportedFeatures = gengo.SupportedFeatures
+		gen.SupportedEditionsMinimum = descriptorpb.Edition_EDITION_2023
+		gen.SupportedEditionsMaximum = descriptorpb.Edition_EDITION_2024 
 		return nil
 	})
 }
