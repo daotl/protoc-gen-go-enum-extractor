@@ -11,4 +11,4 @@ plugins:
     out: gen
     opt:
       - paths=source_relative
-      - include_go_packages=github.com/jiayinzhang-mint/jiayinzhang-mint/protoc-gen-go-enum-extractor/fixture/gen/proto/v1
+      - include_go_packages=github.com/daotl/daotl/protoc-gen-go-enum-extractor/fixture/gen/proto/v1

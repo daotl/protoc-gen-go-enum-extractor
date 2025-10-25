@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	v1 "github.com/jiayinzhang-mint/protoc-gen-go-enum-extractor/gen/proto/v1"
+	v1 "github.com/daotl/protoc-gen-go-enum-extractor/gen/proto/v1"
 	"github.com/magiconair/properties/assert"
 )
 

@@ -1,8 +1,8 @@
-module github.com/jiayinzhang-mint/protoc-gen-go-enum-extractor
+module github.com/daotl/protoc-gen-go-enum-extractor
 
-go 1.20
+go 1.25
 
 require (
-	github.com/magiconair/properties v1.8.7
-	google.golang.org/protobuf v1.30.0
+	github.com/magiconair/properties v1.8.10
+	google.golang.org/protobuf v1.36.10
 )

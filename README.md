@@ -19,7 +19,7 @@ You will not be able to get the enum values with the prefix removed (UNSPECIFIED
 1. Install the plugin
 
 ```bash
-go install github.com/jiayinzhang-mint/protoc-gen-go-enum-extractor@latest
+go install github.com/daotl/protoc-gen-go-enum-extractor@latest
 ```
 
 2. Include this plugin in your buf.gen.yaml
@@ -34,8 +34,8 @@ Parameters:
 # Author
 **Jiayin Zhang**
 
-* <https://github.com/jiayinzhang-mint>
+* <https://github.com/daotl>
 
 # License
 
-Released under [Apache-2.0 License](https://github.com/jiayinzhang-mint/protoc-gen-go-enum-extractor/blob/main/LICENSE)
+Released under [Apache-2.0 License](https://github.com/daotl/protoc-gen-go-enum-extractor/blob/main/LICENSE)
