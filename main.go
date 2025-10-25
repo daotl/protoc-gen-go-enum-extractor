@@ -28,12 +28,18 @@ var (
 func main() {
 	var flags flag.FlagSet
 
-	flags.Var(&includeGoPackages, "include_go_packages", "list of go packages with govmomi-related types definitions to include")
-	flags.StringVar(&unspecifiedSuffix, "unspecified_suffix", "UNSPECIFIED", "suffix to remove from enum values (e.g. UNSPECIFIED, UNSET, etc.)")
+	flags.Var(&includeGoPackages, "include_go_packages",
+		"list of go packages with govmomi-related types definitions to include")
+	flags.StringVar(&unspecifiedSuffix, "unspecified_suffix", "UNSPECIFIED",
+		"suffix to remove from enum values (e.g. UNSPECIFIED, UNSET, etc.)")
 
 	protogen.Options{
 		ParamFunc: flags.Set,
 	}.Run(func(gen *protogen.Plugin) error {
+		gen.SupportedFeatures = gengo.SupportedFeatures
+		gen.SupportedEditionsMinimum = descriptorpb.Edition_EDITION_2023
+		gen.SupportedEditionsMaximum = descriptorpb.Edition_EDITION_2024
+
 		// if there are no files to generate, return nil
 		if len(gen.Files) == 0 {
 			return nil
@@ -60,9 +66,6 @@ func main() {
 			}
 		}
 
-		gen.SupportedFeatures = gengo.SupportedFeatures
-		gen.SupportedEditionsMinimum = descriptorpb.Edition_EDITION_2023
-		gen.SupportedEditionsMaximum = descriptorpb.Edition_EDITION_2024 
 		return nil
 	})
 }
