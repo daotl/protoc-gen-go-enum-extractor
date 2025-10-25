@@ -73,6 +73,7 @@ func main() {
 // checkGoImportPath checks if the given file's GoImportPath is included in the includeTypesGoPackages list
 func checkGoImportPath(gen *protogen.Plugin, file *protogen.File) bool {
 	for _, p := range includeGoPackages {
+		panic(file.GoImportPath)
 		if p == string(file.GoImportPath) {
 			return true
 		}
