@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"strings"
 
 	gengo "google.golang.org/protobuf/cmd/protoc-gen-go/internal_gengo"
@@ -59,6 +60,7 @@ func main() {
 			enumNum := len(f.Enums)
 			for _, m := range f.Messages {
 				enumNum += len(m.Enums)
+				panic(fmt.Sprintf("%v", f.Enums[0], m.Enums[0]))
 			}
 
 			if enumNum > 0 {
