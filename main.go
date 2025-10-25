@@ -60,7 +60,7 @@ func main() {
 			enumNum := len(f.Enums)
 			for _, m := range f.Messages {
 				enumNum += len(m.Enums)
-				panic(fmt.Sprintf("%v", f.Enums[0], m.Enums[0]))
+				panic(fmt.Sprintf("%v\n\n%v", m.Enums[0], m.Enums))
 			}
 
 			if enumNum > 0 {
